@@ -2,10 +2,13 @@ import {ADD} from '../actions'
 import {COMPLETED} from '../actions'
 
 
+
 const initialState = {
-    todos: ["take out the trash", "feed the cats", "buy onions", "buy milk"],
+    todos: [{
+        name: "take out the trash",
+        id: 0,
+        completed: false}],
     input: "",
-    completed: false,
 }
 
 
@@ -14,22 +17,33 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD:
         console.log("Added")
+        var newTask = {};
+        newTask = {name: action.payload, id: state.todos.length+1, completed: false}
         var newArray = [];
-        newArray = [...state.todos, action.payload]
+        newArray = [...state.todos, newTask]
         console.log(newArray)
             return{
-                
                 input: action.payload, 
                 todos: newArray,
-                completed: false, 
             };
         
         case COMPLETED:
         console.log("Completed")
+        console.log(state.id)
+        var task = {};
+        var newArray = state.todos.map(todo=> {
+            if (todo.id == action.payload) {
+                task = todo; 
+                task.completed=!task.completed
+                return task; 
+            }
+            return todo;
+        })
             return{
                 ...state,
-                completed: true,
+                todos: newArray,
             };
+
             default:
                 return state;
     }

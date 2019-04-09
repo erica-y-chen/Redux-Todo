@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {addTodo} from '../actions'
+import './todo.css'
 
 class TodoNew extends React.Component{
     constructor(props) {

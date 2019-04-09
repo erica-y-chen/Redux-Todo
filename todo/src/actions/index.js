@@ -10,9 +10,10 @@ export const addTodo = todo => {
     }
 }
 
-export const completedTask = task => {
-    console.log(task)
+export const completedTask = id => {
+    console.log(id)
     return{
         type: COMPLETED,
+        payload: id,
     }
 }

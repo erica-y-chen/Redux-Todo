@@ -2,14 +2,18 @@ import React from 'react';
 import './todo.css'
 import {connect} from 'react-redux'
 import {completedTask} from '../actions'
-
+import incomplete from '../img/incomplete.png'
+import complete from '../img/complete.png'
 
 const Todo = props => {
+    console.log(props.completed)
     return(
         <div className = "task">
-            <div className ="completed" onClick={props.completedTask}>x</div>
+            <img className="completed" src={!props.completed ? incomplete : complete} 
+            onClick = {e => {props.completedTask(props.id)}}/>
+
             <div className ="border">hi</div>
-            <p>{props.todo}</p>
+            <p>{props.name}</p>
         </div>
     )
 }
@@ -17,7 +21,7 @@ const Todo = props => {
 
 const mapStateToProps = (state) => {
     return {
-        completed: state.completed,
+        // todos: state.todos
     };
 };
 
