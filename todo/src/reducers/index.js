@@ -1,9 +1,11 @@
 import {ADD} from '../actions'
+import {COMPLETED} from '../actions'
 
 
 const initialState = {
     todos: ["take out the trash", "feed the cats", "buy onions", "buy milk"],
-    input: ""
+    input: "",
+    completed: false,
 }
 
 
@@ -16,12 +18,19 @@ const reducer = (state = initialState, action) => {
         newArray = [...state.todos, action.payload]
         console.log(newArray)
             return{
-                ...state,
+                
                 input: action.payload, 
                 todos: newArray,
                 completed: false, 
             };
-            default: 
+        
+        case COMPLETED:
+        console.log("Completed")
+            return{
+                ...state,
+                completed: true,
+            };
+            default:
                 return state;
     }
 };
