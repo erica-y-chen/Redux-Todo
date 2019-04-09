@@ -27,11 +27,12 @@ class TodoNew extends React.Component{
                     name: '',
                 })
             }}>
-            <input
+            <input className="input"
                 type="text"
                 name="name"
                 value = {this.state.name}
                 onChange = {this.handleChanges}
+                placeholder = "new task"
                 /> 
             </form>
         )

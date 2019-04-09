@@ -12,8 +12,9 @@ const Todo = props => {
             <img className="completed" src={!props.completed ? incomplete : complete} 
             onClick = {e => {props.completedTask(props.id)}}/>
 
-            <div className ="border">hi</div>
+            {/* <div className ="border">hi</div> */}
             <p>{props.name}</p>
+            <div className="delete">-</div>
         </div>
     )
 }

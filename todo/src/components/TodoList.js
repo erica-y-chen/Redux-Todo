@@ -11,8 +11,8 @@ class TodoList extends React.Component{
     render(){
         console.log(this.props.todos)
         return(
-            <div>
-                <TodoNew />
+            <div className ="app">
+                <div className="header"><div className="todoText">Todo List</div></div>
                 <div className="list">
                     {this.props.todos.map(todo => {
                         return (
@@ -20,6 +20,7 @@ class TodoList extends React.Component{
                         )
                     })}
                 </div>
+                <TodoNew />
             </div>
         )
     }
