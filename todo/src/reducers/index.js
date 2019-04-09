@@ -2,7 +2,7 @@ import {ADD} from '../actions'
 
 
 const initialState = {
-    todos: ["a", "b", "c", "d"],
+    todos: ["take out the trash", "feed the cats", "buy onions", "buy milk"],
     input: ""
 }
 
@@ -19,6 +19,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 input: action.payload, 
                 todos: newArray,
+                completed: false, 
             };
             default: 
                 return state;

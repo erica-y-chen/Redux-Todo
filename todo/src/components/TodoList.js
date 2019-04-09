@@ -3,6 +3,7 @@ import TodoNew from './TodoNew'
 import Todo from './Todo'
 import {connect} from 'react-redux'
 import {addTodo} from '../actions'
+import './todo.css'
 
 class TodoList extends React.Component{
 
@@ -12,11 +13,13 @@ class TodoList extends React.Component{
         return(
             <div>
                 <TodoNew />
-                {this.props.todos.map(todo => {
-                    return (
-                        <Todo todo={todo}/>
-                    )
-                })}
+                <div className="list">
+                    {this.props.todos.map(todo => {
+                        return (
+                            <Todo todo={todo}/>
+                        )
+                    })}
+                </div>
             </div>
         )
     }
