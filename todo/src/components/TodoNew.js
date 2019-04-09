@@ -1,23 +1,31 @@
 import React from 'react';
-import {addTodo} from '../actions';
+import {connect} from 'react-redux'
+import {addTodo} from '../actions'
 
 class TodoNew extends React.Component{
-    constructor() {
-        super(); 
+    constructor(props) {
+        super(props); 
         this.state= {
-            name: ''
+            name: props.input || ""
         };
     }
 
     handleChanges = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            name: e.target.value
         });
     };
 
     render() {
         return(
-            <form onSubmit={() => this.props.addTodo()}>
+            <form onSubmit = {(e) => {
+                e.preventDefault();
+                this.props.addTodo(this.state.name)
+                
+                this.setState({
+                    name: '',
+                })
+            }}>
             <input
                 type="text"
                 name="name"
@@ -29,5 +37,11 @@ class TodoNew extends React.Component{
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        todos: state.todos,
+        input: state.input,
+    };
+};
 
-export default TodoNew;
+export default connect(mapStateToProps, {addTodo})(TodoNew);

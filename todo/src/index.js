@@ -8,7 +8,7 @@ import {createStore} from 'redux';
 import { Provider } from 'react-redux';
 import todoList from './reducers';
 
-const store = createStore(todoList);
+const store = createStore(todoList, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
 ReactDOM.render(
@@ -21,3 +21,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
